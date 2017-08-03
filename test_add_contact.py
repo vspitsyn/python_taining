@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 
-#загружаем модуль работы с селектами
+#загружаем модуль для работы с селектами
 from selenium.webdriver.support.ui import Select
 
-#from selenium.webdriver.common.action_chains import ActionChains
+from contact import Contact
 
 import time, unittest
 
@@ -27,58 +27,80 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
-    def create_contact(self, wd, firstname, middlename, lastname, nickname, title, company, company_address, home_phone,
-                       mobile_phone, work_phone, fax, email1, email2, email3, homepage, birth_day, birth_month,
-                       birth_year, anniver_day, anniver_month, anniver_year, home_address, address, notes):
+    def create_contact(self, wd, contact):
         # init contact creation
         wd.find_element_by_link_text("add new").click()
-        # fill contact form
-        wd.find_element_by_name("firstname").send_keys(firstname)
-        wd.find_element_by_name("middlename").send_keys(middlename)
-        wd.find_element_by_name("lastname").send_keys(lastname)
-        wd.find_element_by_name("nickname").send_keys(nickname)
-        # wd.find_element_by_name("photo").click()
-        wd.find_element_by_name("title").send_keys(title)
-        wd.find_element_by_name("company").send_keys(company)
-        wd.find_element_by_name("address").send_keys(company_address)
-        wd.find_element_by_name("home").send_keys(home_phone)
-        wd.find_element_by_name("mobile").send_keys(mobile_phone)
-        wd.find_element_by_name("work").send_keys(work_phone)
-        wd.find_element_by_name("fax").send_keys(fax)
-        wd.find_element_by_name("email").send_keys(email1)
-        wd.find_element_by_name("email2").send_keys(email2)
-        wd.find_element_by_name("email3").send_keys(email3)
-        wd.find_element_by_name("homepage").send_keys(homepage)
-        # Birthday date
-        selectDay1 = Select(wd.find_element_by_xpath("//select[@name='bday']"))
-        selectDay1.select_by_visible_text(birth_day)
-        selectMon1 = Select(wd.find_element_by_xpath("//select[@name='bmonth']"))
-        selectMon1.select_by_visible_text(birth_month)
-        wd.find_element_by_name("byear").send_keys(birth_year)
-        # Anniversary date
-        selectDay1 = Select(wd.find_element_by_xpath("//select[@name='aday']"))
-        selectDay1.select_by_visible_text(anniver_day)
-        selectMon1 = Select(wd.find_element_by_xpath("//select[@name='amonth']"))
-        selectMon1.select_by_visible_text(anniver_month)
-        wd.find_element_by_name("ayear").send_keys(anniver_year)
 
-        wd.find_element_by_name("address2").send_keys(home_address)
-        wd.find_element_by_name("phone2").send_keys(address)
-        wd.find_element_by_name("notes").send_keys(notes)
+        # fill contact form
+        wd.find_element_by_name("firstname").send_keys(contact.firstname)
+        wd.find_element_by_name("middlename").send_keys(contact.middlename)
+        wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        # wd.find_element_by_name("photo").click()
+        wd.find_element_by_name("title").send_keys(contact.title)
+        wd.find_element_by_name("company").send_keys(contact.company)
+        wd.find_element_by_name("address").send_keys(contact.company_address)
+        wd.find_element_by_name("home").send_keys(contact.home_phone)
+        wd.find_element_by_name("mobile").send_keys(contact.mobile_phone)
+        wd.find_element_by_name("work").send_keys(contact.work_phone)
+        wd.find_element_by_name("fax").send_keys(contact.fax)
+        wd.find_element_by_name("email").send_keys(contact.email1)
+        wd.find_element_by_name("email2").send_keys(contact.email2)
+        wd.find_element_by_name("email3").send_keys(contact.email3)
+        wd.find_element_by_name("homepage").send_keys(contact.homepage)
+            # Birthday date
+        selectDay1 = Select(wd.find_element_by_xpath("//select[@name='bday']"))
+        selectDay1.select_by_visible_text(contact.birth_day)
+        selectMon1 = Select(wd.find_element_by_xpath("//select[@name='bmonth']"))
+        selectMon1.select_by_visible_text(contact.birth_month)
+        wd.find_element_by_name("byear").send_keys(contact.birth_year)
+            # Anniversary date
+        selectDay1 = Select(wd.find_element_by_xpath("//select[@name='aday']"))
+        selectDay1.select_by_visible_text(contact.anniver_day)
+        selectMon1 = Select(wd.find_element_by_xpath("//select[@name='amonth']"))
+        selectMon1.select_by_visible_text(contact.anniver_month)
+        wd.find_element_by_name("ayear").send_keys(contact.anniver_year)
+
+        wd.find_element_by_name("address2").send_keys(contact.home_address)
+        wd.find_element_by_name("phone2").send_keys(contact.home_phone2)
+        wd.find_element_by_name("notes").send_keys(contact.notes)
+
         # submit contact creation
         wd.find_element_by_xpath("//input[@value='Enter']").click()
 
 
-    def test_test_add_contact(self):
+    def test_new_contact(self):
         wd = self.wd
         # login
         self.login(wd, "admin", "secret")
 
-        self.create_contact(wd, "Elena", "Petrovna", "Ivanova", "EPI", "Secretary", "Sviaz-Bank",
-                            "St. Novoryazanskaya, d. 31/7, korp.1, Moscow", "+77776665544", "+78883332244",
-                            "+71112223344", "no", "epi100@mail.ru", "no", "no", "www.epi100.ru", "2", "February",
-                            "1986", "2", "February", "2006", "St.16 Parkovaya, D. 4, kV. 1, Moscow",
-                            "St.16 Parkovaya, D. 4, kV. 1, Moscow", "two children")
+        #create contact object
+        contact1 = Contact(firstname  = "Elena",
+                          middlename = "Petrovna",
+                          lastname = "Ivanova",
+                          nickname = "EPI",
+                          title = "Secretary",
+                          company = "Sviaz-Bank",
+                          company_address = "St. Novoryazanskaya, d. 31/7, korp.1, Moscow",
+                          home_phone = "+77776665544",
+                          mobile_phone = "+78883332244",
+                          work_phone = "+71112223344",
+                          fax = "no",
+                          email1 = "epi100@mail.ru",
+                          email2 = "no",
+                          email3 = "no",
+                          homepage = "www.epi100.ru",
+                          birth_day = "3",
+                          birth_month = "February",
+                          birth_year = "1986",
+                          anniver_day = "3",
+                          anniver_month  ="February",
+                          anniver_year = "2006",
+                          home_address = "St.16 Parkovaya, D. 4, kV. 1, Moscow",
+                          home_phone2 = "no",
+                          notes = "two children")
+        #create contact
+        self.create_contact(wd, contact1)
 
         #logout
         wd.find_element_by_link_text("Logout").click()
