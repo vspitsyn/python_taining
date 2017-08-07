@@ -21,13 +21,15 @@ class test_add_contact(unittest.TestCase):
         self.wd.implicitly_wait(60)
 
 
-    def login(self, wd, username, password):
+    def login(self, username, password):
+        wd = self.wd
         wd.get("http://localhost:8080/addressbook")
         wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
-    def create_contact(self, wd, contact):
+    def create_contact(self, contact):
+        wd = self.wd
         # init contact creation
         wd.find_element_by_link_text("add new").click()
 
@@ -68,11 +70,13 @@ class test_add_contact(unittest.TestCase):
         # submit contact creation
         wd.find_element_by_xpath("//input[@value='Enter']").click()
 
+    def logout(self):
+        wd = self.wd
+        wd.find_element_by_link_text("Logout").click()
 
     def test_new_contact(self):
-        wd = self.wd
         # login
-        self.login(wd, "admin", "secret")
+        self.login("admin", "secret")
 
         #create contact object
         contact1 = Contact(firstname  = "Elena",
@@ -100,10 +104,9 @@ class test_add_contact(unittest.TestCase):
                           home_phone2 = "no",
                           notes = "two children")
         #create contact
-        self.create_contact(wd, contact1)
-
-        #logout
-        wd.find_element_by_link_text("Logout").click()
+        self.create_contact(contact1)
+        # logout
+        self.logout()
 
     def tearDown(self):
         self.wd.quit()
