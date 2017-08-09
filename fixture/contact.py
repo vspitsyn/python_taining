@@ -1,4 +1,5 @@
 #загружаем модуль для работы с селектами
+import time
 from selenium.webdriver.support.ui import Select
 
 class ContactHelper:
@@ -47,3 +48,11 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_xpath("//input[@value='Enter']").click()
 
+    def delete_first_contact(self):
+        wd = self.app.wd
+        #select_first_contact
+        wd.find_element_by_name("selected[]").click()
+        # submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to_alert().accept()
+        time.sleep(3)
