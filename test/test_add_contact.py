@@ -40,7 +40,7 @@ def test_new_contact(app):
                         home_phone2 = "no",
                         notes = "two children")
     #create contact
-    app.create_contact(contact1)
+    app.contact.create(contact1)
 
     # logout
     app.session.logout()
