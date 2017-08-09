@@ -1,4 +1,5 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from fixture.session import SessionHelper
 
 #загружаем модуль для работы с селектами
 from selenium.webdriver.support.ui import Select
@@ -7,6 +8,7 @@ class Application:
     def __init__(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
+        self.session = SessionHelper(self)
 
     def open_groups_page(self):
         wd = self.wd
@@ -15,16 +17,6 @@ class Application:
     def open_home_page(self):
         wd = self.wd
         wd.get("http://localhost:8080/addressbook")
-
-    def login(self, username, password):
-        wd = self.wd
-
-        #open_home_page
-        self.open_home_page()
-        #wd.get("http://localhost:8080/addressbook")
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def create_group(self, group):
         wd = self.wd
