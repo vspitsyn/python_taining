@@ -7,7 +7,7 @@ def test_edit_first_contact(app):
 
     #create contact object
     contact1 = Contact(firstname  = "Elena",
-                        middlename = "Ivanovna",
+                        middlename = "Ivanovnaa",
                         lastname = "Petrova",
                         nickname = "EPI",
                         title = "Secretary",
@@ -30,7 +30,7 @@ def test_edit_first_contact(app):
                         home_address = "St.15 Parkovaya, D. 4, kV. 1, Moscow",
                         home_phone2 = "no",
                         notes = "two children")
-    #create contact
+    #edit contact1
     app.contact.edit_first_contact(contact1)
 
     # logout
