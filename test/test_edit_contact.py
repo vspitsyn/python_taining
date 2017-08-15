@@ -30,8 +30,13 @@ def test_edit_first_contact(app):
                         home_address = "St.15 Parkovaya, D. 4, kV. 1, Moscow",
                         home_phone2 = "no",
                         notes = "two children")
+    contact2 = Contact(anniver_day="5",
+                       anniver_month="January",
+                       anniver_year="2007",
+                       notes="three children")
     #edit contact1
     app.contact.edit_first_contact(contact1)
+    app.contact.edit_first_contact(contact2)
 
     # logout
     app.session.logout()
