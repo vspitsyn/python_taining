@@ -4,7 +4,10 @@ from model.contact import Contact
 def test_edit_first_contact(app):
     # login
     #app.session.login("admin", "secret")
-
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname  = "IVAN",
+                                    middlename = "IVANOVICH",
+                                    lastname = "IVANOV"))
     #create contact object
     contact1 = Contact(firstname  = "Elena",
                         middlename = "Ivanovnaa",
