@@ -23,32 +23,42 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Enter']").click()
         self.contact_cache = None
 
-    def delete_first_contact(self):
+    # def delete_first_contact(self):
+    #     wd = self.app.wd
+    #     self.open_contact_page()
+    #     #select_first_contact
+    #     wd.find_element_by_name("selected[]").click()
+    #     # submit deletion
+    #     wd.find_element_by_xpath("//input[@value='Delete']").click()
+    #     wd.switch_to_alert().accept()
+    #     time.sleep(3)
+    #     self.contact_cache = None
+
+    def delete_contact_by_index(self,index):
         wd = self.app.wd
         self.open_contact_page()
         #select_first_contact
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
         time.sleep(3)
         self.contact_cache = None
 
-    def edit_first_contact(self, contact):
+    def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_contact_page()
-        # select_first_contact
-        if not wd.find_element_by_name("selected[]").is_selected():
-            wd.find_element_by_name("selected[]").click()
+        # выбираем контакт
+        if not wd.find_elements_by_name("selected[]")[index].is_selected():
+            wd.find_elements_by_name("selected[]")[index].click()
         # init contact edition
-        #wd.find_element_by_xpath("//input[@title='Edit']").click()
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr["+str(2+index)+"]/td[8]/a/img").click()
         self.fill_contact_form(contact)
-
         # submit contact edition
         wd.find_element_by_xpath("//input[@value='Update']").click()
         time.sleep(3)
         self.contact_cache = None
+
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
