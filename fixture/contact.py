@@ -21,6 +21,7 @@ class ContactHelper:
         self.fill_contact_form(contact)
         # submit contact creation
         wd.find_element_by_xpath("//input[@value='Enter']").click()
+        self.contact_cache = None
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -31,6 +32,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
         time.sleep(3)
+        self.contact_cache = None
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
@@ -46,6 +48,7 @@ class ContactHelper:
         # submit contact edition
         wd.find_element_by_xpath("//input[@value='Update']").click()
         time.sleep(3)
+        self.contact_cache = None
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
@@ -96,16 +99,18 @@ class ContactHelper:
         #len(wd.find_elements_by_name("selected[]"))
         return len(wd.find_elements_by_name("selected[]"))
 
-    def get_contact_list(self):
-        wd = self.app.wd
-        self.open_contact_page()
-        contacts = []
+    contact_cache = None
 
-        for element in wd.find_elements_by_name("entry"):
-              id = element.find_element_by_name("selected[]").get_attribute("value")
-              cells = element.find_elements_by_tag_name("td")
-              hash = cells[1].text + cells[2].text + cells[3].text + cells[4].text + cells[5].text
-              contacts.append(Contact(lastname = cells[1].text, firstname = cells[2].text, id = id, hash = hash))
-#              contacts.append(Contact(lastname=cells[2].text, firstname=cells[1].text, id=id))
-        return contacts
+    def get_contact_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
+            for element in wd.find_elements_by_name("entry"):
+                  id = element.find_element_by_name("selected[]").get_attribute("value")
+                  cells = element.find_elements_by_tag_name("td")
+                  hash = cells[1].text + cells[2].text + cells[3].text + cells[4].text + cells[5].text
+                  self.contact_cache.append(Contact(lastname = cells[1].text, firstname = cells[2].text, id = id, hash = hash))
+    #              self.contact_cache.append(Contact(lastname=cells[2].text, firstname=cells[1].text, id=id))
+        return list(self.contact_cache)
 
