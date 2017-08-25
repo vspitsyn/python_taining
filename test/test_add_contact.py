@@ -2,9 +2,8 @@
 from model.contact import Contact
 
 def test_new_contact(app):
-    # login
-    #app.session.login("admin", "secret")
 
+    old_contacts = app.contact.get_contact_list()
     #create contact object
     contact1 = Contact(firstname  = "Elena",
                         middlename = "Petrovna",
@@ -32,8 +31,14 @@ def test_new_contact(app):
                         notes = "two children")
     #create contact
     app.contact.create(contact1)
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) + 1 == len(new_contacts)
+    old_contacts.append(contact1)
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+
 
     # logout
     #app.session.logout()
 
 
+1

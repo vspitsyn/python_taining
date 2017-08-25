@@ -8,10 +8,11 @@ def test_edit_first_contact(app):
         app.contact.create(Contact(firstname  = "IVAN",
                                     middlename = "IVANOVICH",
                                     lastname = "IVANOV"))
+    old_contacts = app.contact.get_contact_list()
     #create contact object
     contact1 = Contact(firstname  = "Elena",
                         middlename = "Ivanovnaa",
-                        lastname = "Petrova",
+                        lastname = "Petrova-Sidorova",
                         nickname = "EPI",
                         title = "Secretary",
                         company = "Sviaz-Bank",
@@ -33,13 +34,19 @@ def test_edit_first_contact(app):
                         home_address = "St.15 Parkovaya, D. 4, kV. 1, Moscow",
                         home_phone2 = "no",
                         notes = "two children")
-    contact2 = Contact(anniver_day="5",
-                       anniver_month="January",
-                       anniver_year="2007",
-                       notes="three children")
-    #edit contact1
     app.contact.edit_first_contact(contact1)
-    app.contact.edit_first_contact(contact2)
+    new_contacts = app.contact.get_contact_list()
+    assert len(old_contacts) == len(new_contacts)
+    old_contacts[0] = contact1
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+
+
+    # contact2 = Contact(anniver_day="5",
+    #                    anniver_month="January",
+    #                    anniver_year="2007",
+    #                    notes="three children")
+    #edit contact1
+    #app.contact.edit_first_contact(contact2)
 
     # logout
     #app.session.logout()
