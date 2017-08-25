@@ -55,17 +55,84 @@ class Contact:
         self.id = id
 
         def str_or_no(string):
-            if string is None:
-                return "no"
+            if (string is None) or (string == ""):
+                return ""
             else:
                 return str(string)
 
+        #для строк, после которых следует перенос \n
+        def strn_or_no(string):
+            if (string is None) or (string == ""):
+                return ""
+            else:
+                return str(string) +'\n'
+
+        def hash_str(self):
+            self.hash = str_or_no(self.lastname) + str_or_no(self.firstname) + str_or_no(self.company_address) + \
+                        strn_or_no(self.email1)+ strn_or_no(self.email2)+ str_or_no(self.email3)+ \
+                        strn_or_no(self.home_phone) + strn_or_no(self.mobile_phone) + strn_or_no(self.work_phone) + str_or_no(self.fax)
+
+
         if hash is None:
-            self.hash = str_or_no(lastname) + str_or_no(firstname) + str_or_no(company_address) + \
-                        str_or_no(email1) +'\n'+ str_or_no(email2) +'\n'+ str_or_no(email3)+ \
-                        str_or_no(home_phone) +'\n'+ str_or_no(mobile_phone) +'\n'+ str_or_no(work_phone) +'\n'+ str_or_no(fax)
+            hash_str(self)
+            # self.hash = str_or_no(lastname) + str_or_no(firstname) + str_or_no(company_address) + \
+            #             strn_or_no(email1)+ strn_or_no(email2)+ str_or_no(email3)+ \
+            #             strn_or_no(home_phone) + strn_or_no(mobile_phone) + strn_or_no(work_phone) + str_or_no(fax)
         else:
             self.hash = hash
+
+        # изменение полей объекта Contact
+    def fill_contact_values(self, contact):
+        def hash_str(self):
+            self.hash = str_or_no(self.lastname) + str_or_no(self.firstname) + str_or_no(self.company_address) + \
+                        strn_or_no(self.email1)+ strn_or_no(self.email2)+ str_or_no(self.email3)+ \
+                        strn_or_no(self.home_phone) + strn_or_no(self.mobile_phone) + strn_or_no(self.work_phone) + str_or_no(self.fax)
+
+        def str_or_no(string):
+            if (string is None) or (string == ""):
+                return ""
+            else:
+                return str(string)
+
+        def strn_or_no(string):
+            if (string is None) or (string == ""):
+                return ""
+            else:
+                return str(string) +'\n'
+
+        def fill_contact_value(a, b):
+            if b is not None:
+                return b
+            else:
+                return a
+
+        self.firstname = fill_contact_value(self.firstname, contact.firstname)
+        self.middlename = fill_contact_value(self.middlename, contact.middlename)
+        self.lastname = fill_contact_value(self.lastname, contact.lastname)
+        self.nickname = fill_contact_value(self.nickname, contact.nickname)
+        self.title = fill_contact_value(self.title, contact.title)
+        self.company = fill_contact_value(self.company, contact.company)
+        self.company_address = fill_contact_value(self.company_address, contact.company_address)
+        self.home_phone = fill_contact_value(self.home_phone, contact.home_phone)
+        self.mobile_phone = fill_contact_value(self.mobile_phone, contact.mobile_phone)
+        self.work_phone = fill_contact_value(self.work_phone, contact.work_phone)
+        self.fax = fill_contact_value(self.fax, contact.fax)
+        self.email1 = fill_contact_value(self.email1, contact.email1)
+        self.email2 = fill_contact_value(self.email2, contact.email2)
+        self.email3 = fill_contact_value(self.email3, contact.email3)
+        self.homepage = fill_contact_value(self.homepage, contact.homepage)
+        # Birthday date
+        self.birth_day = fill_contact_value(self.birth_day, contact.birth_day)
+        self.birth_month = fill_contact_value(self.birth_month, contact.birth_month)
+        self.birth_year = fill_contact_value(self.birth_year, contact.birth_year)
+        # Anniversary date
+        self.anniver_day = fill_contact_value(self.anniver_day, contact.anniver_day)
+        self.anniver_month = fill_contact_value(self.anniver_month, contact.anniver_month)
+        self.anniver_year = fill_contact_value(self.anniver_year, contact.anniver_year)
+        self.home_address = fill_contact_value(self.home_address, contact.home_address)
+        self.home_phone2 = fill_contact_value(self.home_phone2, contact.home_phone2)
+        self.notes = fill_contact_value(self.notes, contact.notes)
+        hash_str(self)
 
     #метод, задающий ключ для сортировки списка объектов Контакт
     def id_or_max(self):
@@ -80,8 +147,8 @@ class Contact:
 
     # стандартный метод, определяющий правила сравнения объектов
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and (self.hash == other.hash)
-#        return (self.id is None or other.id is None or self.id == other.id) and (self.lastname + ' ' + self.firstname) == \
-#                                                                                (other.lastname + ' ' + other.firstname)
+        #return (self.id is None or other.id is None or self.id == other.id) and (self.hash == other.hash)
+        return (self.id is None or other.id is None or self.id == other.id) and (self.lastname == other.lastname) \
+               and (self.firstname == other.firstname)
 
 

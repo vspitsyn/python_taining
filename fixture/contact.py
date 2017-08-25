@@ -105,6 +105,7 @@ class ContactHelper:
               id = element.find_element_by_name("selected[]").get_attribute("value")
               cells = element.find_elements_by_tag_name("td")
               hash = cells[1].text + cells[2].text + cells[3].text + cells[4].text + cells[5].text
-              contacts.append(Contact(lastname = cells[2].text, firstname = cells[1].text, id = id, hash = hash))
+              contacts.append(Contact(lastname = cells[1].text, firstname = cells[2].text, id = id, hash = hash))
 #              contacts.append(Contact(lastname=cells[2].text, firstname=cells[1].text, id=id))
         return contacts
+
