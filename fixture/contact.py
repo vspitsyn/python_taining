@@ -52,7 +52,7 @@ class ContactHelper:
         if not wd.find_elements_by_name("selected[]")[index].is_selected():
             wd.find_elements_by_name("selected[]")[index].click()
         # init contact edition
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr["+str(2+index)+"]/td[8]/a/img").click()
+        wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
         self.fill_contact_form(contact)
         # submit contact edition
         wd.find_element_by_xpath("//input[@value='Update']").click()
@@ -93,7 +93,8 @@ class ContactHelper:
     def fill_select_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
-            selectDay1 = Select(wd.find_element_by_xpath("//select[@name='"+field_name+"']"))
+            #selectDay1 = Select(wd.find_element_by_xpath("//select[@name='"+field_name+"']"))
+            selectDay1 = Select(wd.find_element_by_xpath("//select[@name='%s']"%field_name))
             selectDay1.select_by_visible_text(text)
 
     def fill_field_value(self, field_name, text):

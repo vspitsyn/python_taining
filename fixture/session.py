@@ -21,7 +21,15 @@ class SessionHelper:
 
     def is_logget_in_as(self, username):
         wd = self.app.wd
-        return wd.find_element_by_xpath("//div/div[1]/form/b").text =="(" + username +")"
+        return self.get_logget_user() == username
+        #return wd.find_element_by_xpath("//div/div[1]/form/b").text == "(%s)" % username
+        #return wd.find_element_by_xpath("//div/div[1]/form/b").text =="(" + username +")"
+
+    def get_logget_user(self):
+        wd = self.app.wd
+        #чтобы получить чистое имя пользователя, вырезаем скобки:
+        return wd.find_element_by_xpath("//div/div[1]/form/b").text[1:-1]
+
 
     def ensure_logout(self):
         wd = self.app.wd
