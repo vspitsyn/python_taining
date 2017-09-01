@@ -27,6 +27,7 @@ class Contact:
                   home_phone2 = None,
                   notes = None,
                   id=None,
+                  all_phones_from_home_page = None,
                   hash = None):
         self.firstname = firstname
         self.middlename = middlename
@@ -53,6 +54,8 @@ class Contact:
         self.home_phone2 = home_phone2
         self.notes = notes
         self.id = id
+        self.all_phones_from_home_page = all_phones_from_home_page
+
 
         def str_or_no(string):
             if (string is None) or (string == ""):

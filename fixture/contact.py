@@ -135,9 +135,13 @@ class ContactHelper:
                   cells = element.find_elements_by_tag_name("td")
                   lastname = cells[1].text
                   firstname = cells[2].text
-                  all_phones = cells[5].text.splitlines()
+                  all_phones = cells[5].text
+                  #all_phones = cells[5].text.splitlines()
                   hash = lastname + firstname + cells[3].text + cells[4].text + cells[5].text
-                  self.contact_cache.append(Contact(lastname = lastname, firstname = firstname, id = id, home_phone=all_phones[0], mobile_phone=all_phones[1], work_phone = all_phones[2], fax = all_phones[3], hash = hash))
+                  self.contact_cache.append(
+                      Contact(lastname=lastname, firstname=firstname, id=id,
+                              all_phones_from_home_page=all_phones, hash=hash))
+                  #self.contact_cache.append(Contact(lastname = lastname, firstname = firstname, id = id, home_phone=all_phones[0], mobile_phone=all_phones[1], work_phone = all_phones[2], fax = all_phones[3], hash = hash))
     #              self.contact_cache.append(Contact(lastname=cells[2].text, firstname=cells[1].text, id=id))
         return list(self.contact_cache)
 
