@@ -19,7 +19,7 @@ class Group:
 
     # стандартный метод, определяющий вид вывода объекта на консоль
     def __repr__(self):
-        return "%s:%s" % (self.id, self.name)
+        return "%s:%s;%s;%s"%(self.id, self.name, self.header, self.footer)
 
     # стандартный метод, определяющий правила сравнения объектов
     def __eq__(self, other):
