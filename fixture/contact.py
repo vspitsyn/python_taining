@@ -135,12 +135,14 @@ class ContactHelper:
                   cells = element.find_elements_by_tag_name("td")
                   lastname = cells[1].text
                   firstname = cells[2].text
+                  company_address = cells[3].text
+                  all_mail = cells[4].text
                   all_phones = cells[5].text
                   #all_phones = cells[5].text.splitlines()
                   hash = lastname + firstname + cells[3].text + cells[4].text + cells[5].text
                   self.contact_cache.append(
-                      Contact(lastname=lastname, firstname=firstname, id=id,
-                              all_phones_from_home_page=all_phones, hash=hash))
+                      Contact(lastname=lastname, firstname=firstname, id=id,company_address = company_address,
+                              all_mail_from_home_page = all_mail, all_phones_from_home_page=all_phones, hash=hash))
                   #self.contact_cache.append(Contact(lastname = lastname, firstname = firstname, id = id, home_phone=all_phones[0], mobile_phone=all_phones[1], work_phone = all_phones[2], fax = all_phones[3], hash = hash))
     #              self.contact_cache.append(Contact(lastname=cells[2].text, firstname=cells[1].text, id=id))
         return list(self.contact_cache)
@@ -151,12 +153,17 @@ class ContactHelper:
         lastname = wd.find_element_by_name('lastname').get_attribute("value")
         firstname = wd.find_element_by_name('firstname').get_attribute("value")
         id = wd.find_element_by_name('id').get_attribute("value")
+        company_address = wd.find_element_by_name('address').get_attribute("value")
         home_phone = wd.find_element_by_name('home').get_attribute("value")
         mobile_phone = wd.find_element_by_name('mobile').get_attribute("value")
         work_phone = wd.find_element_by_name('work').get_attribute("value")
         fax = wd.find_element_by_name('fax').get_attribute("value")
-        return Contact(firstname=firstname, lastname=lastname, id = id, home_phone=home_phone, mobile_phone=
-                       mobile_phone, work_phone=work_phone, fax=fax)
+        email1 = wd.find_element_by_name('email').get_attribute("value")
+        email2 = wd.find_element_by_name('email2').get_attribute("value")
+        email3 = wd.find_element_by_name('email3').get_attribute("value")
+        return Contact(firstname=firstname, lastname=lastname, id = id, company_address = company_address,
+                       email1 = email1, email2 = email2, email3 = email3,
+                       home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone, fax=fax)
 
 
     def get_contact_from_view_page(self, index):

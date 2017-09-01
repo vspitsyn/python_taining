@@ -27,6 +27,7 @@ class Contact:
                   home_phone2 = None,
                   notes = None,
                   id=None,
+                  all_mail_from_home_page=None,
                   all_phones_from_home_page = None,
                   hash = None):
         self.firstname = firstname
@@ -55,6 +56,7 @@ class Contact:
         self.notes = notes
         self.id = id
         self.all_phones_from_home_page = all_phones_from_home_page
+        self.all_mail_from_home_page = all_mail_from_home_page
 
 
         def str_or_no(string):
