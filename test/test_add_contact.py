@@ -46,15 +46,7 @@ testdata = [Contact(firstname  = random_name_string("first",10),
                     email3 = random_string("e3@",15),
                     homepage = random_www_true_string("www",15),
                     birth_date = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)),
-                    #birth_day = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)).day,
-                    # birth_month = model.date_time.month_name(model.date_time.randomDate(
-                    #     datetime.date(1900,1,1), datetime.date(2017,1,1)).month),
-                    # birth_year = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)).year,
                     anniver_date = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)),
-                    # anniver_day = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)).day,
-                    # anniver_month  = model.date_time.month_name(model.date_time.randomDate(
-                    #     datetime.date(1900,1,1), datetime.date(2017,1,1)).month),
-                    # anniver_year = model.date_time.randomDate(datetime.date(1900,1,1), datetime.date(2017,1,1)).year,
                     home_address = random_string("home_addr",40),
                     home_phone2 = random_string("home_ph2",15),
                     notes = random_string("notr",40)) for i in range(4)]
