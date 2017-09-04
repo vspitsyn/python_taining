@@ -1,5 +1,6 @@
 #загружаем модуль для работы с селектами
 import time
+import model.date_time
 import re
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
@@ -92,13 +93,23 @@ class ContactHelper:
         self.fill_field_value("email3",contact.email3)
         self.fill_field_value("homepage",contact.homepage)
         # Birthday date
-        self.fill_select_value("bday",contact.birth_day)
-        self.fill_select_value("bmonth",contact.birth_month)
-        self.fill_field_value("byear",contact.birth_year)
+        if contact.birth_date is not None:
+            self.fill_select_value("bday",str(contact.birth_date.day))
+            self.fill_select_value("bmonth", str(model.date_time.month_name(contact.birth_date.month)))
+            self.fill_field_value("byear", str(contact.birth_date.year))
+        else:
+            self.fill_select_value("bday", str(contact.birth_day))
+            self.fill_select_value("bmonth",str(contact.birth_month))
+            self.fill_field_value("byear",str(contact.birth_year))
         # Anniversary date
-        self.fill_select_value("aday", contact.anniver_day)
-        self.fill_select_value("amonth", contact.anniver_month)
-        self.fill_field_value("ayear",contact.anniver_year)
+        if contact.anniver_date is not None:
+            self.fill_select_value("aday", str(contact.anniver_date.day))
+            self.fill_select_value("amonth", str(model.date_time.month_name(contact.anniver_date.month)))
+            self.fill_field_value("ayear", str(contact.anniver_date.year))
+        else:
+            self.fill_select_value("aday", str(contact.anniver_day))
+            self.fill_select_value("amonth", str(contact.anniver_month))
+            self.fill_field_value("ayear",str(contact.anniver_year))
         self.fill_field_value("address2",contact.home_address)
         self.fill_field_value("phone2",contact.home_phone2)
         self.fill_field_value("notes",contact.notes)

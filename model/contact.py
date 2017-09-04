@@ -17,9 +17,11 @@ class Contact:
                   email2 = None,
                   email3 = None,
                   homepage = None,
+                  birth_date=None,
                   birth_day = None,
                   birth_month = None,
                   birth_year = None,
+                  anniver_date=None,
                   anniver_day = None,
                   anniver_month = None,
                   anniver_year = None,
@@ -45,9 +47,11 @@ class Contact:
         self.email2 = email2
         self.email3 = email3
         self.homepage = homepage
+        self.birth_date = birth_date
         self.birth_day = birth_day
         self.birth_month = birth_month
         self.birth_year = birth_year
+        self.anniver_date = anniver_date
         self.anniver_day = anniver_day
         self.anniver_month = anniver_month
         self.anniver_year = anniver_year
