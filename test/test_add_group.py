@@ -1,22 +1,15 @@
-# -*- coding: utf-8 -*-
+ #-*- coding: utf-8 -*-
 from model.group import Group
-import  pytest
-import random
-import string
+# import  pytest
+# #from data.add_group import constant as testdata
+# from data.groups import testdata
+
 #import time, unittest
 
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters+string.digits+string.punctuation+" "*10
-    return prefix+"".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+#@pytest.mark.parametrize("group", testdata, ids = [repr(x) for x in testdata])
 
-testdata = [Group(name="", header="", footer=""),
-    Group(name="ИУ6", header="We", footer="Are")]+ [
-    Group(name=random_string("name",10), header=random_string("header",20), footer=random_string("footer",20))
-    for i in range (3)]
-
-@pytest.mark.parametrize("group", testdata, ids = [repr(x) for x in testdata])
-
-def test_add_group(app, group):
+def test_add_group(app, data_groups):
+    group = data_groups
     old_groups = app.group.get_group_list()
     #group = Group(name="ИУ6", header="We", footer="Are")
     app.group.create(group)
