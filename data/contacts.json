@@ -1,0 +1,214 @@
+[
+  {
+    "py/object": "model.contact.Contact",
+    "all_mail_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "anniver_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B80EEA=="
+        ]
+      ]
+    },
+    "anniver_day": null,
+    "anniver_month": null,
+    "anniver_year": null,
+    "birth_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B6EBCw=="
+        ]
+      ]
+    },
+    "birth_day": null,
+    "birth_month": null,
+    "birth_year": null,
+    "company": "compFmp.M\\ETEp0^}",
+    "company_address": "comp_addrkf%-Ec%F, }TrGY",
+    "email1": "e1@$^ YRs{.AD h",
+    "email2": "e2@W|* E870R",
+    "email3": "e3@3xPT (",
+    "fax": "faxS",
+    "firstname": "Первыйfirstd-h-j",
+    "hash": "last-dHПервыйfirstd-h-jcomp_addrkf%-Ec%F, }TrGYe1@$^ YRs{.AD h\ne2@W|* E870R\ne3@3xPT (home_ph_w%Rp>\nmob_phG,Ojt-[}Jj\nwork_ph9W\\J\\KzA)T)G4\nfaxS",
+    "home_address": "home_addr mb<(tJW QL[v7",
+    "home_phone": "home_ph_w%Rp>",
+    "home_phone2": "home_ph25ijfZAg",
+    "homepage": "www6fj",
+    "id": null,
+    "lastname": "last-dH",
+    "middlename": "middleoYaDzE",
+    "mobile_phone": "mob_phG,Ojt-[}Jj",
+    "nickname": "nik%wDi4?",
+    "notes": "notry;1(?173x!RS7C]&/Gg` GDV_K`",
+    "title": "titlen 87",
+    "work_phone": "work_ph9W\\J\\KzA)T)G4"
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "all_mail_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "anniver_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B9MLGA=="
+        ]
+      ]
+    },
+    "anniver_day": null,
+    "anniver_month": null,
+    "anniver_year": null,
+    "birth_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B4sGDQ=="
+        ]
+      ]
+    },
+    "birth_day": null,
+    "birth_month": null,
+    "birth_year": null,
+    "company": "comp%tt 9o[/GH\\o_C$",
+    "company_address": "comp_addr-j{ 3^",
+    "email1": "e1@y5]\\?d(wf M F",
+    "email2": "e2@>>B5& ]H%29z&",
+    "email3": "e3@+v_/ON>+T,H",
+    "fax": "fax}4! pMR*",
+    "firstname": "ПервыйfirsthD g",
+    "hash": "lastCПервыйfirsthD gcomp_addr-j{ 3^e1@y5]\\?d(wf M F\ne2@>>B5& ]H%29z&\ne3@+v_/ON>+T,Hhome_phzt\nmob_phr\\W>qMN\nwork_phk@\nfax}4! pMR*",
+    "home_address": "home_addrfJ\\.IyM%jwT",
+    "home_phone": "home_phzt",
+    "home_phone2": "home_ph2bh/o p\"qru",
+    "homepage": "www0/",
+    "id": null,
+    "lastname": "lastC",
+    "middlename": "middle",
+    "mobile_phone": "mob_phr\\W>qMN",
+    "nickname": "nik",
+    "notes": "notrnA &-Z %AIZ5VHDPct)> ni= #>J| c~x9]/Zr",
+    "title": "title1tT",
+    "work_phone": "work_phk@"
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "all_mail_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "anniver_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B8MDAQ=="
+        ]
+      ]
+    },
+    "anniver_day": null,
+    "anniver_month": null,
+    "anniver_year": null,
+    "birth_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B5EIHQ=="
+        ]
+      ]
+    },
+    "birth_day": null,
+    "birth_month": null,
+    "birth_year": null,
+    "company": "comp\\zF\\t<N:EL*R?",
+    "company_address": "comp_addr0Ee1n~MVkc F(=?",
+    "email1": "e1@@R_%MCL+ F  $T",
+    "email2": "e2@yh",
+    "email3": "e3@Dn",
+    "fax": "faxL?",
+    "firstname": "Первыйfirst-vrc-",
+    "hash": "lastkM oXПервыйfirst-vrc-comp_addr0Ee1n~MVkc F(=?e1@@R_%MCL+ F  $T\ne2@yh\ne3@Dnhome_ph(Npv*W\nmob_ph# g; Xj\nwork_ph -pKP2A\nfaxL?",
+    "home_address": "home_addrV7-:YHG=NcNa%OGZ|WDGO[R,^zeGd2Us(\\%SA",
+    "home_phone": "home_ph(Npv*W",
+    "home_phone2": "home_ph2;Na >",
+    "homepage": "www++",
+    "id": null,
+    "lastname": "lastkM oX",
+    "middlename": "middleu-iJcM-K",
+    "mobile_phone": "mob_ph# g; Xj",
+    "nickname": "nikja}Nh7!_",
+    "notes": "notrW",
+    "title": "titleKU5vJ9hM",
+    "work_phone": "work_ph -pKP2A"
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "all_mail_from_home_page": null,
+    "all_phones_from_home_page": null,
+    "anniver_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B4cDEQ=="
+        ]
+      ]
+    },
+    "anniver_day": null,
+    "anniver_month": null,
+    "anniver_year": null,
+    "birth_date": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B9gMEw=="
+        ]
+      ]
+    },
+    "birth_day": null,
+    "birth_month": null,
+    "birth_year": null,
+    "company": "compcI",
+    "company_address": "comp_addr~G($9\\{Q",
+    "email1": "e1@|<1.mTUcz=l",
+    "email2": "e2@",
+    "email3": "e3@dxuiM",
+    "fax": "faxB O2sC7 ",
+    "firstname": "ПервыйfirstY",
+    "hash": "lastOPTpПервыйfirstYcomp_addr~G($9\\{Qe1@|<1.mTUcz=l\ne2@\ne3@dxuiMhome_phCv\nmob_ph9u}9vW? Zd^I \nwork_ph%WUB&nSQk&4\nfaxB O2sC7 ",
+    "home_address": "home_addr$ed%hg-$n}/_@@i(kuP:?R+jWU3%w~d@FCU",
+    "home_phone": "home_phCv",
+    "home_phone2": "home_ph2UJ* ?4Ed_S;",
+    "homepage": "wwwHUh+i+",
+    "id": null,
+    "lastname": "lastOPTp",
+    "middlename": "middleDp-szQPDq",
+    "mobile_phone": "mob_ph9u}9vW? Zd^I ",
+    "nickname": "nikZNo",
+    "notes": "notr:]wgtOe92bV [obfrMw+)fb]M[Z1a3* .u",
+    "title": "titleJ3>_",
+    "work_phone": "work_ph%WUB&nSQk&4"
+  }
+]

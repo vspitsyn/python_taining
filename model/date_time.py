@@ -20,8 +20,8 @@ def month_name(n):
               9: 'September', 10: 'October', 11: 'November', 12: 'December'}
     return months[n]
 
-print(month_name(6))
-print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)))
-print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).year)
-print(month_name(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).month))
-print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).day)
+# print(month_name(6))
+#print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)))
+# print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).year)
+# print(month_name(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).month))
+# print(randomDate(datetime.date(2000,1,1), datetime.date(2017,1,1)).day)

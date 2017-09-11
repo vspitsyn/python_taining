@@ -1,10 +1,29 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
-import datetime
 import model.date_time
-import  pytest
+import datetime
 import random
 import string
+import os.path
+#import json
+import jsonpickle
+import getopt
+import sys
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of contacts", "file"])
+except getopt.GetoptError as err:
+    getopt.usage()
+    sys.exit(2)
+
+n = 5
+f = "data/contacts.json"
+
+for o, a in opts:
+    if o == "-n":
+        n = int (a)
+    elif o == "-f":
+        f = a
 
 
 def random_string(prefix, maxlen):
@@ -15,11 +34,6 @@ def random_true_string(prefix, maxlen):
     symbols = string.ascii_letters+string.digits+string.punctuation+" "*10
     return prefix+"".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
-
-# def random_name_string(prefix, maxlen):
-#     symbols = string.ascii_letters+"- "*5
-#     return prefix+"".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
-
 def random_name_string(prefix, maxlen):
     symbols = string.ascii_letters+"- "*5
     return prefix+"".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
@@ -29,8 +43,7 @@ def random_www_true_string(prefix, maxlen):
     return prefix+"".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
-
-testdata = [Contact(firstname  = random_name_string("first",10),
+testdata = [Contact(firstname  = random_name_string("Первыйfirst",10),
                     middlename = random_name_string("middle",10),
                     lastname = random_name_string("last",10),
                     nickname = random_string("nik",10),
@@ -52,46 +65,9 @@ testdata = [Contact(firstname  = random_name_string("first",10),
                     notes = random_string("notr",40)) for i in range(4)]
 
 
-@pytest.mark.parametrize("contact", testdata, ids = [repr(x) for x in testdata])
-
-def test_new_contact(app, contact):
-
-    old_contacts = app.contact.get_contact_list()
-    ##create contact object
-    # contact1 = Contact(firstname  = "Elena",
-    #                     middlename = "Petrovna",
-    #                     lastname = "Ivanova",
-    #                     nickname = "EPI",
-    #                     title = "Secretary",
-    #                     company = "Sviaz-Bank",
-    #                     company_address = "St. Novoryazanskaya, d. 31/7, korp.1, Moscow",
-    #                     home_phone = "+77776665544",
-    #                     mobile_phone = "+78883332244",
-    #                     work_phone = "+71112223344",
-    #                     fax = "no",
-    #                     email1 = "epi100@mail.ru",
-    #                     email2 = "no",
-    #                     email3 = "no",
-    #                     homepage = "www.epi100.ru",
-    #                     birth_day = "3",
-    #                     birth_month = "February",
-    #                     birth_year = "1986",
-    #                     anniver_day = "3",
-    #                     anniver_month  ="February",
-    #                     anniver_year = "2006",
-    #                     home_address = "St.16 Parkovaya, D. 4, kV. 1, Moscow",
-    #                     home_phone2 = "no",
-    #                     notes = "two children")
-    #create contact
-    app.contact.create(contact)
-    assert len(old_contacts) + 1 == app.contact.count()
-    new_contacts = app.contact.get_contact_list()
-    old_contacts.append(contact)
-    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
-
-
-    # logout
-    #app.session.logout()
-
-
-#1
+file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
+with open(file, "w", encoding='utf8') as out:
+    #out.write(json.dumps(testdata, default = lambda x: x.__dict__, indent = 2))
+    jsonpickle.set_encoder_options("json", ensure_ascii=False, indent = 2)
+    #jsonpickle.set_encoder_options("json", indent=2)
+    out.write(jsonpickle.encode(testdata))
