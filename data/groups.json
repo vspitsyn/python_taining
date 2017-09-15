@@ -1,13 +1,6 @@
 [
   {
     "py/object": "model.group.Group",
-    "footer": "",
-    "header": "",
-    "id": null,
-    "name": ""
-  },
-  {
-    "py/object": "model.group.Group",
     "footer": "Are",
     "header": "We",
     "id": null,
@@ -18,7 +11,7 @@
     "footer": "footerS9%.dd",
     "header": "header( [%9=Jvu)|Ny",
     "id": null,
-    "name": "name'+P_P',@"
+    "name": "name+P_P   ,@"
   },
   {
     "py/object": "model.group.Group",
@@ -29,15 +22,15 @@
   },
   {
     "py/object": "model.group.Group",
-    "footer": "footer [0&m~HX;'",
-    "header": "headerB47G K*. K`exnO ",
+    "footer": "footer [0&m~HX;",
+    "header": "headerB47G K*. KexnO ",
     "id": null,
     "name": "namer0S:?_"
   },
   {
     "py/object": "model.group.Group",
     "footer": "footerf",
-    "header": "header'xGY\\|4F%nR@UO",
+    "header": "headerxGY\\|4F%nR@UO",
     "id": null,
     "name": "nameur(m1ygD!"
   },
