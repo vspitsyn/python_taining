@@ -13,13 +13,15 @@ def clear_double_space(s):
 #     #def clean(group):
 #     #    return Group(id = group.id, name = clear_double_space(group.name).strip())
 #     #db_list = map(clean, db.get_group_list())
-#     db_list = map(app.group.clean_spaces, db.get_group_list())
+#     db_list = list(map(app.group.clean_spaces, db.get_group_list()))
 #     assert sorted(ui_list, key=Group.id_or_max) == sorted(db_list, key=Group.id_or_max)
 
 def test_contact_list(app, db):
     ui_list = app.contact.get_contact_list()
-    db_list = map(app.contact.clean_spaces, db.get_contact_list())
-    assert sorted(ui_list, key=Group.id_or_max) == sorted(db_list, key=Group.id_or_max)
+    db_list = list(map(app.contact.clean_spaces, db.get_contact_list()))
+    true_list = db.get_contact_list()
+    assert sorted(ui_list, key=Contact.id_or_max) == sorted(db_list, key=Contact.id_or_max)
+    #assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 # from timeit import timeit
 # def test_check_load_time(app,db):

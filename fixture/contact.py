@@ -4,6 +4,7 @@ import model.date_time
 import re
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
+from model.functions import clear_double_space
 
 class ContactHelper:
     def __init__(self,app):
@@ -47,6 +48,17 @@ class ContactHelper:
         time.sleep(3)
         self.contact_cache = None
 
+    def delete_contact_by_id(self,id):
+        wd = self.app.wd
+        self.open_contact_page()
+        if not wd.find_element_by_xpath("//input[@id='%s']"%id).is_selected():
+            wd.find_element_by_xpath("//input[@id='%s']"%id).click()
+        # submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to_alert().accept()
+        time.sleep(3)
+        self.contact_cache = None
+
     def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_contact_to_edit_by_index(index)
@@ -64,6 +76,24 @@ class ContactHelper:
             wd.find_elements_by_name("selected[]")[index].click()
         # init contact edition
         wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
+
+    def edit_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.open_contact_to_edit_by_id(id)
+        self.fill_contact_form(contact)
+        # submit contact edition
+        wd.find_element_by_xpath("//input[@value='Update']").click()
+        time.sleep(3)
+        self.contact_cache = None
+
+    def open_contact_to_edit_by_id(self, id):
+        wd = self.app.wd
+        self.open_contact_page()
+        # выбираем контакт
+        if not wd.find_element_by_xpath("//input[@id='%s']"%id).is_selected():
+            wd.find_element_by_xpath("//input[@id='%s']"%id).click()
+        # init contact edition
+        wd.find_element_by_xpath("//a[@href='edit.php?id=%s']/img[@title='Edit']"%id).click()
 
     def open_contact_view_page_by_index(self, index):
         wd = self.app.wd
@@ -186,3 +216,7 @@ class ContactHelper:
         work_phone = re.search("W: (.*)",text).group(1)
         fax = re.search("F: (.*)",text).group(1)
         return Contact(home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone, fax=fax)
+
+    #ф-я возвращает объект контакт с удаленными крайними проблеами и повторяющимеся пробелами в имени и фамилии
+    def clean_spaces(self, contact):
+        return Contact(id = contact.id, firstname = clear_double_space(contact.firstname).strip(), lastname = clear_double_space(contact.lastname).strip())
