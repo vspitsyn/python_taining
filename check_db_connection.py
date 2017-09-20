@@ -1,3 +1,19 @@
+#тянем из пони
+from fixture.orm import ORMFixture
+from model.group import Group
+db = ORMFixture(host='localhost', name='addressbook', user='root', password= '')
+
+try:
+    l = db.get_contacts_in_group(Group(id = '151'))
+    #l = db.get_contact_list()
+    for item in l:
+        print(item)
+    print(len(l))
+finally:
+    pass #db.destroy()
+
+''' 
+#тянем запросами
 from fixture.db import DbFixture
 db = DbFixture(host='localhost', name='addressbook', user='root', password= '')
 
@@ -8,6 +24,7 @@ try:
     print(len(contacts))
 finally:
     db.destroy()
+'''
 #     cursor.execute("select * from group_list")
 #     for row in cursor.fetchall():
 #         print(row)
