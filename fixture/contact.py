@@ -220,3 +220,14 @@ class ContactHelper:
     #ф-я возвращает объект контакт с удаленными крайними проблеами и повторяющимеся пробелами в имени и фамилии
     def clean_spaces(self, contact):
         return Contact(id = contact.id, firstname = clear_double_space(contact.firstname).strip(), lastname = clear_double_space(contact.lastname).strip())
+
+    def select_group_contacts(self, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        select_name = 'to_group'
+        selectDay1 = Select(wd.find_element_by_xpath("//select[@name='%s']" % select_name))
+        #selectDay1.select_by_visible_text('IU6_const')
+        selectDay1.select_by_value(group_id)
+        print()
+
+
