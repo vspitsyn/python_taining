@@ -219,7 +219,18 @@ class ContactHelper:
 
     #ф-я возвращает объект контакт с удаленными крайними проблеами и повторяющимеся пробелами в имени и фамилии
     def clean_spaces(self, contact):
-        return Contact(id = contact.id, firstname = clear_double_space(contact.firstname).strip(), lastname = clear_double_space(contact.lastname).strip())
+        return Contact(id = contact.id,
+                       firstname = clear_double_space(contact.firstname).strip(),
+                       lastname = clear_double_space(contact.lastname).strip(),
+                       nickname = clear_double_space(contact.nickname).strip(),
+                       company_address=clear_double_space(contact.company_address).strip(),
+                       home_phone=clear_double_space(contact.home_phone).strip(),
+                       mobile_phone=clear_double_space(contact.mobile_phone).strip(),
+                       work_phone=clear_double_space(contact.work_phone).strip(),
+                       home_phone2=clear_double_space(contact.home_phone2).strip(),
+                       email1=clear_double_space(contact.email1).strip(),
+                       email2=clear_double_space(contact.email2).strip(),
+                       email3=clear_double_space(contact.email3).strip())
 
     def select_group_contacts(self, group_id):
         wd = self.app.wd
