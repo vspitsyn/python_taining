@@ -26,16 +26,10 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Enter']").click()
         self.contact_cache = None
 
-    # def delete_first_contact(self):
-    #     wd = self.app.wd
-    #     self.open_contact_page()
-    #     #select_first_contact
-    #     wd.find_element_by_name("selected[]").click()
-    #     # submit deletion
-    #     wd.find_element_by_xpath("//input[@value='Delete']").click()
-    #     wd.switch_to_alert().accept()
-    #     time.sleep(3)
-    #     self.contact_cache = None
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        if not wd.find_element_by_xpath("//input[@id='%s']" % id).is_selected():
+            wd.find_element_by_xpath("//input[@id='%s']" % id).click()
 
     def delete_contact_by_index(self,index):
         wd = self.app.wd
@@ -232,6 +226,34 @@ class ContactHelper:
                        email2=clear_double_space(contact.email2).strip(),
                        email3=clear_double_space(contact.email3).strip())
 
+    def append_contact_to_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.select_contact_by_id(contact_id)
+        select_name = 'to_group'
+        select = Select(wd.find_element_by_xpath("//select[@name='%s']" % select_name))
+        # selectDay1.select_by_visible_text('IU6_const')
+        select.select_by_value(group_id)
+        wd.find_element_by_xpath("//input[@value='Add to']").click()
+        #wd.switch_to_alert().accept()
+        time.sleep(3)
+        self.open_contact_page()
+
+    def del_contact_from_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        select_name = 'group'
+        select = Select(wd.find_element_by_xpath("//select[@name='%s']" % select_name))
+        # selectDay1.select_by_visible_text('IU6_const')
+        select.select_by_value(group_id)
+        time.sleep(3)
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_xpath("//input[@name='remove']").click()
+        #wd.switch_to_alert().accept()
+        time.sleep(3)
+        self.open_contact_page()
+
+
     def select_group_contacts(self, group_id):
         wd = self.app.wd
         self.open_contact_page()
@@ -239,6 +261,6 @@ class ContactHelper:
         selectDay1 = Select(wd.find_element_by_xpath("//select[@name='%s']" % select_name))
         #selectDay1.select_by_visible_text('IU6_const')
         selectDay1.select_by_value(group_id)
-        print()
+        #print()
 
 
